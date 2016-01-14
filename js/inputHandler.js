@@ -1,5 +1,3 @@
-//inputHandler.js
-//TODO: Major todo: all movement must go through the physics filter before being applied. Mark the "apply to player" function as such
 var InputHandler = {
   constants: {
     movementSpeed: 1.0,
@@ -23,9 +21,9 @@ var InputHandler = {
     //translation
     //TODO: handle through physics
     //TODO: if multiple directions, divide movement speed by two, then take square root first
-      Player.entity.translateX(InputHandler.movementVector.x);
-      Player.entity.translateZ(InputHandler.movementVector.z);
-      
+    Player.entity.translateX(InputHandler.movementVector.x);
+    Player.entity.translateZ(InputHandler.movementVector.z);
+
     //rotation
     Player.entity.quaternion.multiply(
       new THREE.Quaternion(
@@ -33,7 +31,7 @@ var InputHandler = {
         InputHandler.rotationVector.y, 
         InputHandler.rotationVector.z, 
         1)
-        .normalize());
+      .normalize());
   },
   
   updateMovementVector: function() {

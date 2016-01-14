@@ -1,10 +1,9 @@
 //world.js
 var World = {
-  
   constants: {
     cameraPos_Y: 6,
-    camerFOV: 60,
-    cameraPerspective: (window.innerWidth/window.innerHeight),
+    cameraFOV: 60,
+    cameraPerspective: (window.innerWidth / window.innerHeight),
     cameraNear: 0.1,
     cameraFar: 500,
     
@@ -17,6 +16,7 @@ var World = {
     lightsIntensity: 0.7,
     
     wallScale: 15,
+	WALL_HEIGHT: 20,
     wallColor: {color: 0xE393E6}
   },
   
@@ -74,7 +74,7 @@ var World = {
  
   initCamera: function() {
     World.camera = new THREE.PerspectiveCamera(
-      World.constants.camerFOV,
+      World.constants.cameraFOV,
       World.constants.cameraPerspective,
       World.constants.cameraNear,
       World.constants.cameraFar);
@@ -88,7 +88,7 @@ var World = {
     //World.map = map;
     mapSize = Dungeon.GetSize();
     
-    wallShape = new THREE.BoxGeometry(World.constants.wallScale, 20, World.constants.wallScale); //20 is wall height
+    wallShape = new THREE.BoxGeometry(World.constants.wallScale, World.constants.WALL_HEIGHT, World.constants.wallScale);
     wallMaterial = new THREE.MeshLambertMaterial(World.constants.wallColor);
     
     //wall
@@ -110,8 +110,8 @@ var World = {
  
   render: function() {
     requestAnimationFrame(World.render); //calls render function again
-		InputHandler.update();
-		World.renderer.render(World.scene, World.camera);
+    InputHandler.update();
+    World.renderer.render(World.scene, World.camera);
   }
   
 };

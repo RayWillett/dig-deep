@@ -50,7 +50,7 @@ var Player = {
       right = new THREE.Mesh(handShape, handMaterial);
       left = new THREE.Mesh(handShape, handMaterial);
             
-            //dont use these magic numbers here
+      //set hands relative to player position rather than arbitrarily as here
       right.position.x += 3;
       right.position.y += 2;
       right.position.z += -8;
